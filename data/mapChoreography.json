@@ -31,25 +31,25 @@
                 "symbol": {
                   "type": "simple-marker",
                   "style": "circle",
-                  "color": "Yellow",
-                  "size": 15,
+                  "color": "#de6231",
+                  "size": 8,
                   "outline": {
-                    "color": "black",
-                    "width": 2
+                    "color": "#de6231",
+                    "width": 8
                   }
                 }
               }
             },
             "previousObservations": {
-              "enabled": true,
-              "visible": true,
+              "enabled": false,
+              "visible": false,
               "renderer": {
                 "type": "simple",
                 "symbol": {
                   "type": "simple-marker",
                   "style": "circle",
                   "color": "white",
-                  "size": 2.5
+                  "size": 2
                 }
               }
             },
@@ -60,8 +60,8 @@
                 "type": "simple",
                 "symbol": {
                   "type": "simple-line",
-                  "color": "Orange",
-                  "width": 4
+                  "color": "#de6231",
+                  "width": 1.25
                 }
               }
             }
