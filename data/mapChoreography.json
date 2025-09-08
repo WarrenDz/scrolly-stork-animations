@@ -143,7 +143,7 @@
     },
     "layerVisibility": {
       "layersOn": ["Stork Track Points"],
-      "layersOff": ["Stork Track Points - Spain Bins"]
+      "layersOff": []
     },
     "timeSlider": {
       "timeSliderStart": "2014-09-22T00:00:00Z",
@@ -169,7 +169,7 @@
     },
     "layerVisibility": {
       "layersOn": ["Stork Track Points"],
-      "layersOff": []
+      "layersOff": ["Stork Track Points - Spain Bins"]
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-10T00:00:00Z",
