@@ -144,7 +144,13 @@
     "layerVisibility": {
       "layersOn": ["Stork Track Points", "Stork Track Points - Spain Bins"],
       "layersOff": []
-    }   
+    },
+      "timeSlider": {
+      "timeSliderStart": "2015-08-10T00:00:00Z",
+      "timeSliderEnd": "2015-08-10T00:00:00Z",
+      "timeSliderUnit": "hours",
+      "timeSliderStep": 1
+    }     
   },
   {
     "viewpoint": {
