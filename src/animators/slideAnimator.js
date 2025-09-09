@@ -16,7 +16,7 @@ const choreographyHandlers = {
  * Skips keys listed in NON_EMBED_EXCLUDE_KEYS when in embedded mode.
  * Logs each triggered animation and catches any handler errors.
  */
-const NON_EMBED_EXCLUDE_KEYS = new Set(["viewpoint", "timeSlider"]);
+const NON_EMBED_EXCLUDE_KEYS = new Set(["viewpoint"]);
 
 export function slideAnimation(slideData, mapView, timeSlider, embedded) {
   const context = { slideData, mapView, timeSlider, embedded };
@@ -42,7 +42,8 @@ export function slideAnimation(slideData, mapView, timeSlider, embedded) {
  */
 function toggleViewpoint({ slideData, mapView, timeSlider, embedded }) {
   const targetViewpoint = Viewpoint.fromJSON(slideData.viewpoint);
-  mapView.goTo(targetViewpoint, {
+  mapView
+    .goTo(targetViewpoint, {
       animate: true,
       duration: 1000,
     })
@@ -57,7 +58,12 @@ function toggleViewpoint({ slideData, mapView, timeSlider, embedded }) {
  * Automatically starts playback if the slider is ready and not in embedded mode.
  */
 function toggleTimeSlider({ slideData, mapView, timeSlider, embedded }) {
-  if ( timeSlider && slideData.timeSlider && slideData.timeSlider.timeSliderStart && slideData.timeSlider.timeSliderEnd ) {
+  if (
+    timeSlider &&
+    slideData.timeSlider &&
+    slideData.timeSlider.timeSliderStart &&
+    slideData.timeSlider.timeSliderEnd
+  ) {
     const timeStart = slideData.timeSlider.timeSliderStart;
     const timeEnd = slideData.timeSlider.timeSliderEnd;
     const timeUnit = slideData.timeSlider.timeSliderUnit;
@@ -80,17 +86,15 @@ function toggleTimeSlider({ slideData, mapView, timeSlider, embedded }) {
     // Start the time slider if not already playing and if outside script embed story
     if (timeSlider.state === "ready" && !embedded) {
       timeSlider.play();
+    } else if (timeSlider.state === "ready" && embedded) {
+      timeSlider.stop();
+    } else if (!timeSlider) {
+      log("No timeSlider component found.");
+    } else {
+      log("No timeSlider configuration found in choreography.");
     }
-    else if (timeSlider.state === "ready" && embedded) {
-      timeSlider.stop()
-  } else if (!timeSlider) {
-    log("No timeSlider component found.");
-  } else {
-    log("No timeSlider configuration found in choreography.");
-  }
   }
 }
-
 
 /**
  * Updates map layer visibility based on slideData configuration.
