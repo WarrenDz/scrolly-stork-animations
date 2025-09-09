@@ -32,10 +32,10 @@
                   "type": "simple-marker",
                   "style": "circle",
                   "color": "#de6231",
-                  "size": 8,
+                  "size": 4,
                   "outline": {
                     "color": "#de6231",
-                    "width": 8
+                    "width": 4
                   }
                 }
               }
@@ -142,7 +142,7 @@
         }
     },
     "layerVisibility": {
-      "layersOn": ["Stork Track Points"],
+      "layersOn": ["Stork Track Points", "Stork Track Points - Spain Bins"],
       "layersOff": []
     },
     "timeSlider": {
