@@ -117,7 +117,7 @@
     },
     "layerVisibility": {
       "layersOn": ["Stork Track Points", "Stork Track Points - Spain Bins"],
-      "layersOff": []
+      "layersOff": ["Landfill points"]
     },
     "timeSlider": {
       "timeSliderStart": "2014-09-22T00:00:00Z",
