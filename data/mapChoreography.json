@@ -32,10 +32,10 @@
                   "type": "simple-marker",
                   "style": "circle",
                   "color": "#de6231",
-                  "size": 4,
+                  "size": 8,
                   "outline": {
                     "color": "#de6231",
-                    "width": 4
+                    "width": 8
                   }
                 }
               }
@@ -126,6 +126,32 @@
       "timeSliderStep": 1
     }    
   },
+{
+    "viewpoint": {
+        "rotation": 0,
+        "scale": 4622324.434309,
+        "targetGeometry": {
+            "spatialReference": {
+                "latestWkid": 3857,
+                "wkid": 102100
+            },
+            "xmin": -1389524.48513841,
+            "ymin": 4051207.5575788375,
+            "xmax": 369138.66164645756,
+            "ymax": 5166576.674315833
+        }
+    },
+    "layerVisibility": {
+      "layersOn": ["Stork Track Points", "Landfill points", "Stork Track Points - Spain Bins"],
+      "layersOff": []
+    },
+    "timeSlider": {
+      "timeSliderStart": "2015-08-10T00:00:00Z",
+      "timeSliderEnd": "2015-08-10T00:00:00Z",
+      "timeSliderUnit": "hours",
+      "timeSliderStep": 1
+    }    
+  },
   {
     "viewpoint": {
         "rotation": 0,
@@ -142,15 +168,15 @@
         }
     },
     "layerVisibility": {
-      "layersOn": ["Stork Track Points", "Stork Track Points - Spain Bins"],
+      "layersOn": ["Stork Track Points", "Stork Track Points-Copy"],
       "layersOff": []
     },
-      "timeSlider": {
-      "timeSliderStart": "2015-08-10T00:00:00Z",
+    "timeSlider": {
+      "timeSliderStart": "2014-09-22T00:00:00Z",
       "timeSliderEnd": "2015-08-10T00:00:00Z",
       "timeSliderUnit": "hours",
       "timeSliderStep": 1
-    }     
+    }    
   },
   {
     "viewpoint": {
@@ -169,7 +195,7 @@
     },
     "layerVisibility": {
       "layersOn": ["Stork Track Points"],
-      "layersOff": ["Stork Track Points - Spain Bins"]
+      "layersOff": ["Stork Track Points - Spain Bins", "Landfill points"]
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-10T00:00:00Z",
