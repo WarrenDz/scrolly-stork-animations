@@ -4,5 +4,6 @@ export const animationConfig = {
   nodeSelector: '#n-6IVlzF',
   choreographyPath: '../data/mapChoreography.json',
   debugMode: true,
-  disableMapNav: true
+  disableMapNav: true,
+  mapId: 'a8ca37e1485b47af8a6bf6502330eb2c'
 };
