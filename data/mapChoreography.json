@@ -126,7 +126,7 @@
       "timeSliderStep": 1
     }    
   },
-{
+  {
     "viewpoint": {
         "rotation": 0,
         "scale": 4622324.434309,
@@ -168,8 +168,8 @@
         }
     },
     "layerVisibility": {
-      "layersOn": ["Stork Track Points", "Stork Track Points-Copy"],
-      "layersOff": []
+      "layersOn": ["Stork Track Points"],
+      "layersOff": ["Stork Track Points-Copy"]
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-10T00:00:00Z",
@@ -194,8 +194,8 @@
         }
     },
     "layerVisibility": {
-      "layersOn": ["Stork Track Points"],
-      "layersOff": ["Stork Track Points - Spain Bins", "Landfill points", "Stork Track Points-Copy"]
+      "layersOn": ["Stork Track Points", "Stork Track Points-Copy"],
+      "layersOff": ["Stork Track Points - Spain Bins", "Landfill points"]
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-10T00:00:00Z",
@@ -221,7 +221,7 @@
     },
     "layerVisibility": {
       "layersOn": ["Stork Track Points"],
-      "layersOff": []
+      "layersOff": ["Stork Track Points-Copy"]
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-24T00:00:00Z",
