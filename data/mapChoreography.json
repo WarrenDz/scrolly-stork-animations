@@ -194,8 +194,8 @@
         }
     },
     "layerVisibility": {
-      "layersOn": ["Stork Track Points", "Stork Track Points-Copy"],
-      "layersOff": ["Stork Track Points - Spain Bins", "Landfill points"]
+      "layersOn": ["Stork Track Points"],
+      "layersOff": ["Stork Track Points - Spain Bins", "Landfill points", "Stork Track Points-Copy"]
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-10T00:00:00Z",
