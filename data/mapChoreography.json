@@ -221,7 +221,7 @@
     },
     "layerVisibility": {
       "layersOn": ["Stork Track Points"],
-      "layersOff": ["Stork Track Points-Copy"]
+      "layersOff": []
     },
     "timeSlider": {
       "timeSliderStart": "2015-08-24T00:00:00Z",
