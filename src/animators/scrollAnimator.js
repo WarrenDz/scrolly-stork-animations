@@ -9,6 +9,7 @@ const choreographyHandlers = {
   viewpoint: interpolateViewpoint,
   timeSlider: interpolateTimeSlider,
   camera: interpolateCamera,
+  environment: interpolateEnvironment
 };
 
 /**
@@ -147,4 +148,45 @@ function interpolateCamera({ slideCurrent, slideNext, progress, mapView, timeSli
   }).catch((error) => {
     console.error("Error setting interpolated camera:", error);
   });
+}
+
+/**
+ * Interpolates between two environment states based on progress (0–1),
+ * and applies the resulting environment to the scene view.
+ */
+function interpolateEnvironment({ slideCurrent, slideNext, progress, mapView, timeSlider }) {
+  const currentEnv = slideCurrent.environment;
+  const nextEnv = slideNext?.environment;
+
+  if (!currentEnv || !nextEnv) return;
+
+  const interpolate = (fromVal, toVal) => fromVal + (toVal - fromVal) * progress;
+
+  // Interpolate datetime and cloud cover
+  const interpolatedDatetime = interpolate(
+    currentEnv.lighting.datetime,
+    nextEnv.lighting.datetime
+  );
+
+  const interpolatedCloudCover = interpolate(
+    currentEnv.weather.cloudCover,
+    nextEnv.weather.cloudCover
+  );
+
+  // Toggle lighting and weather types from next slide
+  const lightingType = nextEnv.lighting.type;
+  const weatherType = nextEnv.weather.type;
+
+  // Apply to mapView.environment
+  mapView.environment = {
+    lighting: {
+      type: lightingType,
+      datetime: new Date(interpolatedDatetime),
+      displayUTCOffset: nextEnv.lighting.displayUTCOffset,
+    },
+    weather: {
+      type: weatherType,
+      cloudCover: interpolatedCloudCover,
+    },
+  };
 }

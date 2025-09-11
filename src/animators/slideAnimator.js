@@ -11,6 +11,7 @@ const choreographyHandlers = {
   layerVisibility: toggleLayerVisibility,
   trackRenderer: toggleTrackRenderer,
   camera: toggleCamera,
+  environment: toggleEnvironment
 };
 
 /**
@@ -194,4 +195,29 @@ function toggleTrackRenderer({ slideData, mapView, timeSlider, embedded }) {
     }
   }
   applyTrackRenderer(slideData.trackRenderer, trackTimeConfig);
+}
+
+/**
+ * Applies the environment settings defined in slideData to the mapView.
+ * Sets lighting type, datetime, UTC offset, and weather type/cloud cover.
+ */
+function toggleEnvironment({ slideData, mapView, timeSlider, embedded }) {
+  const env = slideData.environment;
+  if (!env || !mapView.environment) return;
+
+  const lighting = {
+    type: env.lighting.type,
+    datetime: new Date(env.lighting.datetime),
+    displayUTCOffset: env.lighting.displayUTCOffset,
+  };
+
+  const weather = {
+    type: env.weather.type,
+    cloudCover: env.weather.cloudCover,
+  };
+
+  mapView.environment = {
+    lighting,
+    weather,
+  };
 }
