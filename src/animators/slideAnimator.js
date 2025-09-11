@@ -1,4 +1,5 @@
 const Viewpoint = await $arcgis.import("@arcgis/core/Viewpoint.js");
+const Camera = await $arcgis.import("@arcgis/core/Camera.js");
 
 /**
  * Maps slide data keys to their corresponding animation handler functions,
@@ -9,6 +10,7 @@ const choreographyHandlers = {
   timeSlider: toggleTimeSlider,
   layerVisibility: toggleLayerVisibility,
   trackRenderer: toggleTrackRenderer,
+  camera: toggleCamera,
 };
 
 /**
@@ -49,6 +51,25 @@ function toggleViewpoint({ slideData, mapView, timeSlider, embedded }) {
     })
     .catch((error) => {
       console.error("Error setting viewpoint:", error);
+    });
+}
+
+/**
+ * Sets the scene view to the camera defined in slideData,
+ * animating the transition over 1 second. Logs errors if the transition fails.
+ */
+function toggleCamera({ slideData, mapView, timeSlider, embedded }) {
+  const cameraData = slideData.camera;
+  if (!cameraData) return;
+
+  const targetCamera = Camera.fromJSON(cameraData);
+  mapView
+    .goTo(targetCamera, {
+      animate: true,
+      duration: 1000,
+    })
+    .catch((error) => {
+      console.error("Error setting camera:", error);
     });
 }
 

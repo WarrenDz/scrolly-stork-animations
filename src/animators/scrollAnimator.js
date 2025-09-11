@@ -1,4 +1,5 @@
 const Viewpoint = await $arcgis.import("@arcgis/core/Viewpoint.js");
+const Camera = await $arcgis.import("@arcgis/core/Camera.js");
 
 /**
  * Maps slide data keys to their corresponding animation handler functions,
@@ -6,7 +7,8 @@ const Viewpoint = await $arcgis.import("@arcgis/core/Viewpoint.js");
  */
 const choreographyHandlers = {
   viewpoint: interpolateViewpoint,
-  timeSlider: interpolateTimeSlider
+  timeSlider: interpolateTimeSlider,
+  camera: interpolateCamera,
 };
 
 /**
@@ -112,4 +114,37 @@ function interpolateTimeSlider({ slideCurrent, slideNext, progress, mapView, tim
     console.error("Error setting time slider:", error);
   }
 
+}
+
+/**
+ * Interpolates between two camera states based on progress (0–1),
+ * and applies the resulting camera to the scene view.
+ */
+function interpolateCamera({ slideCurrent, slideNext, progress, mapView, timeSlider }) {
+  const currentCamera = slideCurrent.camera;
+  const nextCamera = slideNext?.camera;
+
+  // If next camera is missing, skip interpolation
+  if (!nextCamera) return;
+
+  const interpolate = (fromVal, toVal) => fromVal + (toVal - fromVal) * progress;
+
+  const interpolatedCamera = {
+    position: {
+      spatialReference: currentCamera.position.spatialReference,
+      x: interpolate(currentCamera.position.x, nextCamera.position.x),
+      y: interpolate(currentCamera.position.y, nextCamera.position.y),
+      z: interpolate(currentCamera.position.z, nextCamera.position.z),
+    },
+    heading: interpolate(currentCamera.heading, nextCamera.heading),
+    tilt: interpolate(currentCamera.tilt, nextCamera.tilt),
+  };
+
+  const targetCamera = Camera.fromJSON(interpolatedCamera);
+  mapView.goTo(targetCamera, {
+    animate: true,
+    duration: 1000,
+  }).catch((error) => {
+    console.error("Error setting interpolated camera:", error);
+  });
 }
